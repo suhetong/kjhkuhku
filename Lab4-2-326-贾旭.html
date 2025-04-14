@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>3.3 个人简历表格</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* 精准还原图片样式的核心代码 */
+        body {
+            background: #f0f0f0;
+            margin: 20px;
+            font-family: '微软雅黑', sans-serif;
+        }
+
+        .resume-container {
+            width: 960px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /* 枫叶装饰精准定位 */
+        .maple-leaf {
+            position: absolute;
+            opacity: 0.15;
+            font-size: 45px;
+            z-index: 1;
+        }
+        .leaf-right { right: -25px; top: 120px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #666;
+            table-layout: fixed;
+        }
+
+        caption {
+            font: bold 24px/60px '微软雅黑';
+            color: #333;
+            background: #f8f8f8;
+            border-bottom: 2px solid #666;
+        }
+
+        th, td {
+            border: 1px solid #999;
+            padding: 12px;
+            vertical-align: middle;
+        }
+
+        /* 图标标题样式 */
+        .icon-title {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        .icon-title i {
+            margin-right: 8px;
+            color: #5588aa;
+            width: 20px;
+        }
+
+        /* 照片区域优化 */
+        .photo-cell {
+            width: 140px;
+            text-align: center;
+            background: #f9f9f9;
+            vertical-align: top;
+        }
+        
+        /* 下拉框样式 */
+        select {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        
+        /* 按钮样式 */
+        .add-btn {
+            background-color: #5588aa;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 8px;
+            font-size: 12px;
+        }
+        .add-btn:hover {
+            background-color: #3a6a8a;
+        }
+        
+        /* 输入框样式 */
+        .input-field {
+            width: 80%;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+        
+        /* 项目列表样式 */
+        .item-list {
+            margin-bottom: 8px;
+        }
+        
+        /* 删除按钮样式 */
+        .delete-btn {
+            color: #ff4444;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+        
+        /* 特长爱好容器 */
+        .hobby-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .hobby-item {
+            background: #f0f7ff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* 编辑按钮样式 */
+        .edit-btn {
+            color: #5588aa;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="maple-leaf leaf-right">🍁</div>
+
+        <table>
+            <caption>个人简历</caption>
+            
+            <!-- 基本信息模块（精准行列合并） -->
+            <tr>
+                <td class="icon-title" width="12%"><i class="fas fa-user"></i>姓名</td>
+                <td width="18%">贾旭</td>
+                <td class="icon-title" width="12%"><i class="fas fa-venus-mars"></i>性别</td>
+                <td width="18%">男</td>
+                <td rowspan="5" class="photo-cell">
+                    <img src="个人图片.jpg" width="120" alt="证件照">
+                </td>
+            </tr>
+            <tr>
+                <td class="icon-title"><i class="fas fa-birthday-cake"></i>年龄</td>
+                <td>18</td>
+                <td class="icon-title"><i class="fas fa-map-marker-alt"></i>籍贯</td>
+                <td>河南郑州</td>
+            </tr>
+            <tr>
+                <td class="icon-title"><i class="fas fa-mobile-alt"></i>联系电话</td>
+                <td colspan="3">136 2385 6862</td>
+            </tr>
+            <tr>
+                <td class="icon-title"><i class="fas fa-envelope"></i>电子邮箱</td>
+                <td colspan="3">3392854966@qq.com</td>
+            </tr>
+            <tr>
+                <td class="icon-title"><i class="fas fa-heartbeat"></i>健康状况</td>
+                <td>
+                    <select>
+                        <option value="健康" selected>健康</option>
+                        <option value="良好">良好</option>
+                        <option value="一般">一般</option>
+                        <option value="有病史">有病史</option>
+                    </select>
+                </td>
+                <td class="icon-title"><i class="fas fa-ring"></i>婚姻状况</td>
+                <td>
+                    <select>
+                        <option value="未婚" selected>未婚</option>
+                        <option value="已婚">已婚</option>
+                        <option value="离异">离异</option>
+                        <option value="丧偶">丧偶</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- 教育信息模块 -->
+            <tr>
+                <td class="icon-title"><i class="fas fa-graduation-cap"></i>学历</td>
+                <td>
+                    <select>
+                        <option value="初中">初中</option>
+                        <option value="高中">高中</option>
+                        <option value="大专">大专</option>
+                        <option value="本科" selected>本科</option>
+                        <option value="硕士">硕士</option>
+                        <option value="博士">博士</option>
+                    </select>
+                </td>
+                <td class="icon-title"><i class="fas fa-laptop-code"></i>专业</td>
+                <td colspan="2">
+                    <select>
+                        <option value="软件工程" selected>软件工程</option>
+                        <option value="计算机科学与技术">计算机科学与技术</option>
+                        <option value="电子信息工程">电子信息工程</option>
+                        <option value="人工智能">人工智能</option>
+                        <option value="数据科学">数据科学</option>
+                        <option value="网络工程">网络工程</option>
+                    </select>
+                </td>
+            </tr>
+            
+            <!-- 毕业院校 -->
+            <tr>
+                <td class="icon-title"><i class="fas fa-university"></i>毕业院校</td>
+                <td colspan="4">
+                    <select>
+                        <option value="鲁东大学" selected>鲁东大学</option>
+                        <option value="烟台大学">烟台大学</option>
+                        <option value="南京大学">南京大学</option>
+                        <option value="南通大学">南通大学</option>
+                        <option value="扬州大学">扬州大学</option>
+                        <option value="苏州大学">苏州大学</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- 求职信息 -->
+            <tr>
+                <td class="icon-title"><i class="fas fa-briefcase"></i>求职意向</td>
+                <td colspan="4">
+                    <select>
+                        <option value="高级全栈工程师" selected>高级全栈工程师</option>
+                        <option value="前端开发工程师">前端开发工程师</option>
+                        <option value="后端开发工程师">后端开发工程师</option>
+                        <option value="移动开发工程师">移动开发工程师</option>
+                        <option value="数据分析师">数据分析师</option>
+                        <option value="人工智能工程师">人工智能工程师</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- 技能证书 -->
+            <tr>
+                <td class="icon-title"><i class="fas fa-certificate"></i>技能证书</td>
+                <td colspan="4">
+                    <div id="certificates-container">
+                        <div class="item-list">
+                            ▪ 软件工程设计师
+                            <span class="delete-btn" onclick="removeItem(this)"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="item-list">
+                            ▪ Oracle认证工程师（OCP）
+                            <span class="delete-btn" onclick="removeItem(this)"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="item-list">
+                            ▪ 大学英语六级证书（CET-6）
+                            <span class="delete-btn" onclick="removeItem(this)"><i class="fas fa-times"></i></span>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="text" id="new-certificate" class="input-field" placeholder="输入新的技能证书">
+                        <button class="add-btn" onclick="addCertificate()">添加证书</button>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 特长爱好 - 四个独立项+新建功能 -->
+            <tr>
+                <td class="icon-title"><i class="fas fa-palette"></i>特长爱好</td>
+                <td colspan="4">
+                    <div class="hobby-container" id="hobbies-container">
+                        <div class="hobby-item">
+                            <span id="hobby1">编程开发</span>
+                            <span class="edit-btn" onclick="editHobby(1)"><i class="fas fa-edit"></i></span>
+                            <span class="delete-btn" onclick="removeHobby(1)"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="hobby-item">
+                            <span id="hobby2">登山运动</span>
+                            <span class="edit-btn" onclick="editHobby(2)"><i class="fas fa-edit"></i></span>
+                            <span class="delete-btn" onclick="removeHobby(2)"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="hobby-item">
+                            <span id="hobby3">摄影创作</span>
+                            <span class="edit-btn" onclick="editHobby(3)"><i class="fas fa-edit"></i></span>
+                            <span class="delete-btn" onclick="removeHobby(3)"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="hobby-item">
+                            <span id="hobby4">技术文档阅读</span>
+                            <span class="edit-btn" onclick="editHobby(4)"><i class="fas fa-edit"></i></span>
+                            <span class="delete-btn" onclick="removeHobby(4)"><i class="fas fa-times"></i></span>
+                        </div>
+                    </div>
+                    
+                    <!-- 编辑区域 -->
+                    <div style="display: none;" id="hobby-edit-container">
+                        <input type="text" id="hobby-edit-input" class="input-field">
+                        <button class="add-btn" onclick="saveHobby()">保存</button>
+                        <button class="add-btn" onclick="cancelEdit('hobby')" style="background-color: #ccc;">取消</button>
+                        <input type="hidden" id="current-edit-id">
+                    </div>
+                    
+                    <!-- 新建区域 -->
+                    <div>
+                        <input type="text" id="new-hobby" class="input-field" placeholder="输入新的特长爱好">
+                        <button class="add-btn" onclick="addHobby()">添加爱好</button>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 项目经历 -->
+            <tr>
+                <td class="icon-title"><i class="fas fa-project-diagram"></i>项目经历</td>
+                <td colspan="4">
+                    <strong>2023.03-至今 智能仓储管理系统</strong><br>
+                    技术栈：Spring Cloud + Vue + Redis<br>
+                    <strong>2022.06-2023.02 电商平台开发</strong><br>
+                    技术亮点：微服务架构设计、高并发解决方案
+                </td>
+            </tr>
+
+            <!-- 自我评价 -->
+            <tr>
+                <td class="icon-title"><i class="fas fa-comment"></i>自我评价</td>
+                <td colspan="4">
+                    本人具有扎实的计算机专业知识，熟练掌握Java/Python等编程语言，熟悉Spring Cloud微服务架构。在团队项目中注重代码质量，擅长将复杂需求转化为高效解决方案。持续学习新技术，年均完成3项专业认证。具备良好的沟通能力和团队协作精神，期待在实战中不断提升技术能力。
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // 添加技能证书
+        function addCertificate() {
+            const input = document.getElementById('new-certificate');
+            const value = input.value.trim();
+            
+            if (value) {
+                const container = document.getElementById('certificates-container');
+                const newItem = document.createElement('div');
+                newItem.className = 'item-list';
+                newItem.innerHTML = `▪ ${value} <span class="delete-btn" onclick="removeItem(this)"><i class="fas fa-times"></i></span>`;
+                container.appendChild(newItem);
+                input.value = '';
+            }
+        }
+        
+        // 删除项目
+        function removeItem(element) {
+            element.parentElement.remove();
+        }
+        
+        // 支持按Enter键添加证书
+        document.getElementById('new-certificate').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addCertificate();
+            }
+        });
+        
+        // 编辑特长爱好
+        function editHobby(id) {
+            const hobbyElement = document.getElementById('hobby' + id);
+            const editContainer = document.getElementById('hobby-edit-container');
+            const editInput = document.getElementById('hobby-edit-input');
+            const currentIdInput = document.getElementById('current-edit-id');
+            
+            editInput.value = hobbyElement.textContent;
+            currentIdInput.value = id;
+            editContainer.style.display = 'block';
+        }
+        
+        // 保存特长爱好
+        function saveHobby() {
+            const editInput = document.getElementById('hobby-edit-input');
+            const currentId = document.getElementById('current-edit-id').value;
+            const hobbyElement = document.getElementById('hobby' + currentId);
+            
+            if (editInput.value.trim()) {
+                hobbyElement.textContent = editInput.value.trim();
+                document.getElementById('hobby-edit-container').style.display = 'none';
+            }
+        }
+        
+        // 删除特长爱好
+        function removeHobby(id) {
+            const hobbyItem = document.getElementById('hobby' + id).parentElement;
+            hobbyItem.remove();
+        }
+        
+        // 添加特长爱好
+        function addHobby() {
+            const input = document.getElementById('new-hobby');
+            const value = input.value.trim();
+            
+            if (value) {
+                const container = document.getElementById('hobbies-container');
+                const newId = Date.now(); // 使用时间戳作为唯一ID
+                
+                const newItem = document.createElement('div');
+                newItem.className = 'hobby-item';
+                newItem.innerHTML = `
+                    <span id="hobby${newId}">${value}</span>
+                    <span class="edit-btn" onclick="editHobby(${newId})"><i class="fas fa-edit"></i></span>
+                    <span class="delete-btn" onclick="removeHobby(${newId})"><i class="fas fa-times"></i></span>
+                `;
+                
+                container.appendChild(newItem);
+                input.value = '';
+            }
+        }
+        
+        // 支持按Enter键添加爱好
+        document.getElementById('new-hobby').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addHobby();
+            }
+        });
+    </script>
+</body>
+</html>
